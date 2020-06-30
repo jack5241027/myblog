@@ -1,38 +1,50 @@
 module.exports = {
   siteMetadata: {
-    title: 'Jack Chan Blog',
-    description: '開發筆記。',
+    title: 'Jack Chan\'s Blog.',
+    description: '這都是我不會的。',
     author: '@jack5241027',
+    tags: ['dev', 'coffee', 'hiking', 'surfing', 'diving', 'movie']
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Jack Chan',
+        short_name: `Jack Chan`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#ffffff`,
+        display: `minimal-ui`,
+        icon: `src/assets/images/logo.png`, // This path is relative to the root of the site.
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/images`,
-        name: 'images',
+        path: `${__dirname}/src/assets`,
+        name: 'assets',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/content`,
-        name: 'pages',
+        name: 'posts',
       },
     },
-    'gatsby-transformer-remark',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-transformer-remark`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 780,
+            },
+          },
+        ],
       },
     },
     {
@@ -42,12 +54,7 @@ module.exports = {
         displayName: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    'gatsby-plugin-react-helmet',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',

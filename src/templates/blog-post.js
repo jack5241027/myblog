@@ -1,14 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
+import SEO from '../components/Seo';
 
 export default function Template({ data }) {
   const { frontmatter, html } = data.content;
 
   return (
-    <div>
-      <h1>{frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </div>
+    <Layout>
+        <SEO title="Tag" />
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+    </Layout>
   );
 }
 

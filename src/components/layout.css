@@ -1,3 +1,28 @@
+@font-face {
+  font-family: "Brutal-Type-Regular";
+  src: url("../assets/fonts/Brutal-Type-Regular.ttf");
+} 
+
+@font-face {
+  font-family: "Sebino-Regular";
+  src: url("../assets/fonts/Sebino-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Utopia-Std-Bold-Subhead";
+  src: url("../assets/fonts/Utopia-Std-Bold-Subhead.ttf");
+}
+
+@font-face {
+  font-family: "KelsonSansBold";
+  src: url("../assets/fonts/KelsonSansBold.otf");
+}
+
+@font-face {
+  font-family: "Corporate-Regular";
+  src: url("../assets/fonts/Corporate-Regular.otf");
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -40,6 +65,7 @@ template {
   display: none;
 }
 a {
+  text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }

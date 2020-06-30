@@ -1,21 +1,48 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import styled from "styled-components"
 
-import Layout from '../components/layout';
-import Image from '../components/image';
-import SEO from '../components/seo';
+import Layout from '../components/Layout';
+import Image from '../components/Image';
+import SEO from '../components/Seo';
+import Post from '../components/Post';
+
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+  <StaticQuery
+    query={graphql`
+      query getAllPost {
+        allPost: allMarkdownRemark{
+          nodes {
+            info: frontmatter {
+              title
+              description
+              id
+              path
+              tags
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <Layout>
+        <SEO title="Home" />
+        <React.Fragment>
+          {data.allPost.nodes.map(({info}) => (
+            <Post
+              key={info.id}
+              title={info.title}
+              id={info.id.toString()}
+              desc={info.description}
+              tag={info.tags[0]}
+              path={info.path}
+            />
+          ))}
+        </React.Fragment>
+      </Layout>
+    )}
+  />
 );
 
 export default IndexPage;
