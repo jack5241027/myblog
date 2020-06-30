@@ -16,6 +16,9 @@ const Wrap = styled.div`
 const Tag = styled.div`
   font-family: 'Avenir Next','Helvetica Neue','Segoe UI','Helvetica','Arial','sans-serif';
   line-height: 32px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #3366FF;
 `
 const Title = styled.div`
   display: block;
@@ -75,7 +78,6 @@ const Post = ({
 
 Post.propTypes = {
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
 }

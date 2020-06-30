@@ -34,9 +34,26 @@ const Container = styled.div`
 
 const Icon = styled.div``
 
-const Tag = styled.div`
+const TagLink = styled(Link)`
+  position: relative;
   margin: 0 1rem;
   color: #000000;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid #3366FF;
+    transition: 0.4s;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+`
+
+const Tag = styled.div`
 `
 
 const Nav = styled.div`
@@ -54,13 +71,13 @@ const Header = ({ siteTitle, tags }) => (
         </StyledLink>
       </Title>
       <Nav>
-        <Link to="/">
-          <Tag key="All">All</Tag>
-        </Link>
+        <TagLink to="/">
+          All
+        </TagLink>
         {tags.map((tag) => (
-          <Link key={tag} to={`/${tag}`}>
-            <Tag>{tag.toUpperCase()}</Tag>
-          </Link>
+          <TagLink key={tag} to={`/${tag}`}>
+            {tag.toUpperCase()}
+          </TagLink>
         ))}
       </Nav>
     </Container>

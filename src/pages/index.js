@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
-import styled from "styled-components"
+import { StaticQuery, graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import Image from '../components/Image';
 import SEO from '../components/Seo';
 import Post from '../components/Post';
 
